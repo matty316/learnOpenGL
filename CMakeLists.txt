@@ -12,5 +12,12 @@ add_executable(learnOpenGl ${SOURCES} ${INCLUDES} "${CMAKE_SOURCE_DIR}/src/glad.
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-target_link_libraries(learnOpenGl ${CMAKE_SOURCE_DIR}/lib/glfw3.lib)
-
+if (APPLE)
+    target_link_libraries(learnOpenGl ${CMAKE_SOURCE_DIR}/lib/libglfw3.a)
+    target_link_libraries(${PROJECT_NAME} "-framework IOKit")
+    target_link_libraries(${PROJECT_NAME} "-framework Cocoa")
+    target_link_libraries(${PROJECT_NAME} "-framework OpenGL")
+endif()
+if(WIN32)
+    target_link_libraries(learnOpenGl ${CMAKE_SOURCE_DIR}/lib/glfw3.lib)
+endif()

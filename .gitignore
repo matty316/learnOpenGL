@@ -1,2 +1,5 @@
 .vs
 out/build/x64-Debug
+build
+lib/.DS_Store
+.DS_Store
